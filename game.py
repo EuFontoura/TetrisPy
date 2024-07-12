@@ -85,23 +85,26 @@ class Game:
             if all(row):
                 delete_rows.append(i)
 
-        if delete_rows: 
+        if delete_rows:
+
             for delete_row in delete_rows:
                 # delete full rows
                 for block in self.field_data[delete_row]:
                     if block:
                         block.kill()
-                
+
                 # move down blocks
                 for y in range(delete_row, 0, -1):
-                    for x in range(COLUMNS):
-                        self.field_data[y][x] = self.field_data[y-1][x]
-                        if self.field_data[y][x]:
-                            self.field_data[y][x].pos.y += 1
+                    self.field_data[y] = self.field_data[y - 1]
+
+                    # update block positions
+                    for block in self.field_data[y]:
+                        if block:
+                            block.pos.y += 1
 
                 # clear the top row
-                for x in range(COLUMNS):
-                    self.field_data[0][x] = 0
+                self.field_data[0] = [0 for _ in range(COLUMNS)]
+
 
     def run(self):
 
