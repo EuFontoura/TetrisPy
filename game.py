@@ -36,7 +36,7 @@ class Game:
     def create_new_tetromino(self):
             self.check_finished_rows()
             self.tetromino = Tetromino(
-                choice(list(TETROMINOS.keys())),
+                choice(list(TETROMINOS.keys())), 
                 self.sprites, 
                 self.create_new_tetromino,
                 self.field_data)
@@ -102,8 +102,6 @@ class Game:
                 # clear the top row
                 for x in range(COLUMNS):
                     self.field_data[0][x] = 0
-
-
 
     def run(self):
 
