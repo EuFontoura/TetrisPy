@@ -35,7 +35,7 @@ class Game:
     def create_new_tetromino(self):
             self.check_finished_rows()
             self.tetromino = Tetromino(
-                choice(list(TETROMINOS.keys())), 
+                choice(list(TETROMINOS.keys())),
                 self.sprites, 
                 self.create_new_tetromino,
                 self.field_data)
@@ -71,8 +71,7 @@ class Game:
                 self.timers['horizontal move'].activate()
 
     def check_finished_rows(self):
-
-        # get the full row indexes
+    # get the full row indexes
         delete_rows = []
         for i, row in enumerate(self.field_data):
             if all(row):
@@ -80,21 +79,22 @@ class Game:
 
         if delete_rows: 
             for delete_row in delete_rows:
-
                 # delete full rows
                 for block in self.field_data[delete_row]:
-                    block.kill()
-
+                    if block:
+                        block.kill()
+                
                 # move down blocks
-                for row in self.field_data:
-                    for block in row:
-                        if block and block.pos.y < delete_row:
-                            block.pos.y += 1
+                for y in range(delete_row, 0, -1):
+                    for x in range(COLUMNS):
+                        self.field_data[y][x] = self.field_data[y-1][x]
+                        if self.field_data[y][x]:
+                            self.field_data[y][x].pos.y += 1
 
-            # rebuild the field data
-            self.field_data = [[0 for x in range(COLUMNS)] for y in range (ROWS)]
-            for block in self.sprites:
-                self.field_data[int(block.pos.y)][int(block.pos.x)]
+                # clear the top row
+                for x in range(COLUMNS):
+                    self.field_data[0][x] = 0
+
 
 
     def run(self):
