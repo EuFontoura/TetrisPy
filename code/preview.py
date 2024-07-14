@@ -11,7 +11,7 @@ class Preview:
         self.rect = self.surface.get_rect(topright = (WINDOW_WIDTH - PADDING, PADDING))
 
         # shapes
-        self.shape_surfaces = {shape: load(path.join('..','graphics',f'{shape}.png')).convert_alpha() for shape in TETROMINOS.keys()}
+        self.shape_surfaces = {shape: load(path.join('graphics',f'{shape}.png')).convert_alpha() for shape in TETROMINOS.keys()}
 
         # image position data
         self.increment_height = self.surface.get_height() / 3

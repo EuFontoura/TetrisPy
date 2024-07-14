@@ -38,7 +38,8 @@ Use as teclas de seta direta e esquerda para mover as peças e a seta para cima 
  ✅ Peças giram </br>
  ✅ Peças aparecem de forma aleatória </br>
  ✅ Preview das próximas peças </br>
- ❌ Sistema de pontuação </br>
+ ✅ Sistema de pontuação </br>
+ ❌ Game Over </br>
  ❌ Música de fundo </br>
  
 ## Dependências
