@@ -37,7 +37,7 @@ Use as teclas de seta direta e esquerda para mover as peças e a seta para cima 
  ✅ Implementado colisão com o cenário e outras peças </br>
  ✅ Peças giram </br>
  ✅ Peças aparecem de forma aleatória </br>
- ❌ Preview das próximas peças </br>
+ ✅ Preview das próximas peças </br>
  ❌ Sistema de pontuação </br>
  ❌ Música de fundo </br>
  
