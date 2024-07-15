@@ -32,7 +32,7 @@ TetrisPy é um clone do clássico jogo Tetris, desenvolvido em Python utilizando
 Para iniciar o jogo, execute o seguinte comando no terminal:
 python main.py
 
-Use as teclas de seta direta e esquerda para mover as peças e a seta para cima para rotacioná-las.
+Use as teclas de seta direta e esquerda para mover as peças , a seta para cima para rotacioná-las e a seta para baixo para aumentar a velocidade de queda.
 
 ## Funcionalidades
  ✅ Implementado colisão com o cenário e outras peças </br>
@@ -40,8 +40,8 @@ Use as teclas de seta direta e esquerda para mover as peças e a seta para cima 
  ✅ Peças aparecem de forma aleatória </br>
  ✅ Preview das próximas peças </br>
  ✅ Sistema de pontuação </br>
- ❌ Game Over </br>
- ❌ Música de fundo </br>
+ ✅ Game Over </br>
+ ✅ Música de fundo </br>
  
 ## Dependências
 - Python 3.x </br>

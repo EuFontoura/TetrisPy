@@ -1,5 +1,7 @@
 from settings import *
 from random import choice
+from sys import exit
+from os.path import join
 
 from timer import Timer
 
@@ -45,6 +47,10 @@ class Game:
         self.current_score = 0
         self.current_lines = 0
 
+        # sound
+        self.landing_sound = pygame.mixer.Sound(join('sound','landing.wav'))
+        self.landing_sound.set_volume(0.5)
+
     def calculate_score(self, num_lines):
         self.current_lines += num_lines
         self.current_score += SCORE_DATA[num_lines] * self.current_level
@@ -56,7 +62,14 @@ class Game:
             self.timers['vertical move'].duration = self.down_speed
         self.update_score(self.current_lines, self.current_score, self.current_level)
 
+    def check_game_over(self):
+        for block in self.tetromino.blocks:
+            if block.pos.y < 0:
+                exit()
+
     def create_new_tetromino(self):
+            self.landing_sound.play()
+            self.check_game_over()
             self.check_finished_rows()
             self.tetromino = Tetromino(
                 self.get_next_shape(), 
@@ -110,7 +123,6 @@ class Game:
         if self.down_pressed and not keys[pygame.K_DOWN]:
             self.down_pressed = False
             self.timers['vertical move'].duration = self.down_speed
-
 
     def check_finished_rows(self):
     # get the full row indexes
