@@ -14,9 +14,10 @@ TetrisPy é um clone do clássico jogo Tetris, desenvolvido em Python utilizando
 
 ## Instalação
 1. Certifique-se de ter o Python instalado em sua máquina. Você pode baixar o Python [aqui](https://www.python.org/downloads/).
-2. Instale a biblioteca Pygame utilizando pip:
+2. Instale a biblioteca Pygame e Timer utilizando pip:
     ```bash
     pip install pygame
+    pip install timer
     ```
 3. Clone o repositório do projeto:
     ```bash

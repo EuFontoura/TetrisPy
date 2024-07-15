@@ -30,8 +30,11 @@ class Game:
             self.field_data)
 
         # timer
+        self.down_speed = UPDATE_START_SPEED
+        self.down_speed_faster = self.down_speed * 0.3
+        self.down_pressed = False
         self.timers = {
-            'vertical move': Timer(UPDATE_START_SPEED, True, self.move_down),
+            'vertical move': Timer(self.down_speed, True, self.move_down),
             'horizontal move': Timer(MOVE_WAIT_TIME),
             'rotate': Timer(ROTATE_WAIT_TIME)
         }
@@ -48,6 +51,9 @@ class Game:
 
         if self.current_lines / 10 > self.current_level:
             self.current_level += 1
+            self.down_speed *= 0.75
+            self.down_speed_faster = self.down_speed * 0.3
+            self.timers['vertical move'].duration = self.down_speed
         self.update_score(self.current_lines, self.current_score, self.current_level)
 
     def create_new_tetromino(self):
@@ -94,6 +100,17 @@ class Game:
             if keys[pygame.K_UP]:
                 self.tetromino.rotate()
                 self.timers['rotate'].activate()
+
+
+        # down speedup
+        if not self.down_pressed and keys[pygame.K_DOWN]:
+            self.down_pressed = True
+            self.timers['vertical move'].duration = self.down_speed_faster
+        
+        if self.down_pressed and not keys[pygame.K_DOWN]:
+            self.down_pressed = False
+            self.timers['vertical move'].duration = self.down_speed
+
 
     def check_finished_rows(self):
     # get the full row indexes
