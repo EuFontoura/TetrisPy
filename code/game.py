@@ -1,3 +1,5 @@
+import os
+import sys
 from settings import *
 from random import choice
 from sys import exit
@@ -5,10 +7,20 @@ from os.path import join
 
 from timer import Timer
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 class Game: 
     def __init__(self, get_next_shape, update_score):
 
-        #general
+        # general
         self.surface = pygame.Surface((GAME_WIDTH, GAME_HEIGHT))
         self.display_surface = pygame.display.get_surface()
         self.rect = self.surface.get_rect(topleft = (PADDING, PADDING))
@@ -48,7 +60,7 @@ class Game:
         self.current_lines = 0
 
         # sound
-        self.landing_sound = pygame.mixer.Sound(join('sound','landing.wav'))
+        self.landing_sound = pygame.mixer.Sound(resource_path(join('sound', 'landing.wav')))
         self.landing_sound.set_volume(0.5)
 
     def calculate_score(self, num_lines):
@@ -114,7 +126,6 @@ class Game:
                 self.tetromino.rotate()
                 self.timers['rotate'].activate()
 
-
         # down speedup
         if not self.down_pressed and keys[pygame.K_DOWN]:
             self.down_pressed = True
@@ -172,7 +183,7 @@ class Game:
 class Tetromino:
     def __init__(self, shape, group, create_new_tetromino, field_data):
 
-        #setup
+        # setup
         self.shape = shape
         self.block_positions = TETROMINOS[shape]['shape']
         self.color = TETROMINOS[shape]['color']
@@ -190,6 +201,7 @@ class Tetromino:
     def next_move_vertical_collide(self, blocks, amount):
         collision_list = [block.vertical_collide(int(block.pos.y + amount), self.field_data) for block in self.blocks]
         return True if any(collision_list) else False
+    
     # movement
     def move_horizontal(self, amount):
         if not self.next_move_horizontal_collide(self.blocks, amount):
@@ -205,7 +217,7 @@ class Tetromino:
                 self.field_data[int(block.pos.y)][int(block.pos.x)] = block
             self.create_new_tetromino()
 
-# rotate
+    # rotate
     def rotate(self):
         if self.shape != 'O':
 
@@ -225,7 +237,7 @@ class Tetromino:
                 if self.field_data[int(pos.y)][int(pos.x)]:
                     return
 
-                #vertical / floor check
+                # vertical / floor check
                 if pos.y > ROWS:
                     return
 

@@ -1,17 +1,29 @@
+import os
+import sys
 from settings import *
 from pygame.image import load
 from os import path
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 class Preview:
 
-    #general
+    # general
     def __init__(self):
         self.display_surface = pygame.display.get_surface()
         self.surface = pygame.Surface((SIDEBAR_WIDTH, GAME_HEIGHT * PREVIEW_HEIGHT_FRACTION ))
         self.rect = self.surface.get_rect(topright = (WINDOW_WIDTH - PADDING, PADDING))
 
         # shapes
-        self.shape_surfaces = {shape: load(path.join('graphics',f'{shape}.png')).convert_alpha() for shape in TETROMINOS.keys()}
+        self.shape_surfaces = {shape: load(resource_path(path.join('graphics', f'{shape}.png'))).convert_alpha() for shape in TETROMINOS.keys()}
 
         # image position data
         self.increment_height = self.surface.get_height() / 3

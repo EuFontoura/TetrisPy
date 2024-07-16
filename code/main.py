@@ -1,3 +1,5 @@
+import os
+import sys
 from settings import *
 from sys import exit
 from os.path import join
@@ -6,8 +8,17 @@ from os.path import join
 from game import Game
 from score import Score
 from preview import Preview
-
 from random import choice
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class Main:
     def __init__(self):
@@ -27,7 +38,7 @@ class Main:
         self.preview = Preview()
 
         # audio
-        self.music = pygame.mixer.Sound(join('sound','music.mp3'))
+        self.music = pygame.mixer.Sound(resource_path(join('sound', 'music.mp3')))
         self.music.set_volume(0.5)
         self.music.play(-1)
 
@@ -51,8 +62,7 @@ class Main:
             # display
             self.display_surface.fill(GRAY)
 
-
-            #components
+            # components
             self.game.run()
             self.score.run()
             self.preview.run(self.next_shapes)
