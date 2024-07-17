@@ -13,6 +13,7 @@ TetrisPy é um clone do clássico jogo Tetris, desenvolvido em Python utilizando
 - [Licença](#licença)
 
 ## Instalação
+Caso deseje realizar modificações no código:
 1. Certifique-se de ter o Python instalado em sua máquina. Você pode baixar o Python [aqui](https://www.python.org/downloads/).
 2. Instale a biblioteca Pygame e Timer utilizando pip:
     ```bash
@@ -29,8 +30,7 @@ TetrisPy é um clone do clássico jogo Tetris, desenvolvido em Python utilizando
     ```
 
 ## Uso
-Para iniciar o jogo, execute o seguinte comando no terminal:
-python main.py
+Para iniciar o jogo, execute o atalho TetrisPy que se encontra na pasta raiz do projeto ou em ```TetrisPy\code\dist\main.exe```
 
 Use as teclas de seta direta e esquerda para mover as peças , a seta para cima para rotacioná-las e a seta para baixo para aumentar a velocidade de queda.
 
