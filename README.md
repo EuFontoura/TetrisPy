@@ -1,5 +1,7 @@
 # TetrisPy
 
+<h3 align="center"><i>(english bellow)</i></h3>
+
 ## Introdução
 TetrisPy é um clone do clássico jogo Tetris, desenvolvido em Python utilizando a biblioteca Pygame. O objetivo deste projeto é recriar a experiência do jogo Tetris, oferecendo uma base para futuras adições e melhorias. Atualmente, o projeto está em construção e busca replicar as funcionalidades básicas do jogo original.
 
@@ -54,3 +56,61 @@ Gabriel Fontoura
 ## Licença
 
 Este projeto ainda não possui uma licença definida.
+
+<h2 align="center">English</h2>
+
+# TetrisPy
+
+## Introduction
+TetrisPy is a clone of the classic Tetris game, developed in Python using the Pygame library. The goal of this project is to recreate the Tetris game experience, providing a base for future additions and improvements. Currently, the project is under construction and aims to replicate the basic functionalities of the original game.
+
+## Table of Contents
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Dependencies](#dependencies)
+- [Contributors](#contributors)
+- [License](#license)
+
+## Installation
+To make modifications to the code:
+1. Ensure you have Python installed on your machine. You can download Python [here](https://www.python.org/downloads/).
+2. Install the Pygame and Timer libraries using pip:
+    ```bash
+    pip install pygame
+    pip install timer
+    ```
+3. Clone the project repository:
+    ```bash
+    git clone https://github.com/EuFontoura/TetrisPy.git
+    ```
+4. Navigate to the project directory:
+    ```bash
+    cd TetrisPy
+    ```
+
+## Usage
+To start the game, run the TetrisPy shortcut located in the root folder of the project or in `TetrisPy\code\dist\main.exe`.
+
+Use the right and left arrow keys to move the pieces, the up arrow key to rotate them, and the down arrow key to increase the falling speed.
+
+## Features
+✅ Implemented collision with the scenario and other pieces </br>
+✅ Pieces rotate </br>
+✅ Pieces appear randomly </br>
+✅ Preview of the next pieces </br>
+✅ Scoring system </br>
+✅ Game Over </br>
+✅ Background music </br>
+
+## Dependencies
+- Python 3.x </br>
+- Pygame
+
+## Contributors
+- Gabriel Fontoura
+
+## License
+This project does not have a defined license yet.
+
